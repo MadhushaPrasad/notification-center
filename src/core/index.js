@@ -1,4 +1,4 @@
-import { NotificationPopup } from "./NotificationPopup.js";
+import { NotificationPopup } from "../components/NotificationPopup.js";
 
 export class NotificationCenter {
   constructor() {
