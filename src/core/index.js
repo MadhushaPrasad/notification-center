@@ -56,4 +56,22 @@ export class NotificationCenter {
       this.closeNotification(notification);
     }, duration);
   }
+
+  closeNotification(notification) {
+    notification.classList.remove("translate-x-0", "opacity-100");
+    notification.classList.add("translate-x-full", "opacity-0");
+    setTimeout(() => notification.remove(), 500);
+  }
+
+  success({ title = "Success!", text = "Operation completed successfully.", position = "top-3 right-3", duration = 3000 }) {
+    this.showNotification({ title, text, type: "success", position, duration });
+  }
+
+  error({ title = "Error!", text = "Something went wrong.", position = "top-3 right-3", duration = 3000 }) {
+    this.showNotification({ title, text, type: "error", position, duration });
+  }
+
+  warning({ title = "Warning!", text = "Please be careful.", position = "top-3 right-3", duration = 3000 }) {
+    this.showNotification({ title, text, type: "warning", position, duration });
+  }
 }
