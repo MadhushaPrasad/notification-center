@@ -1,3 +1,5 @@
+import { NotificationPopup } from "./NotificationPopup.js";
+
 export class NotificationCenter {
   constructor() {
     this.icons = {
@@ -23,15 +25,19 @@ export class NotificationCenter {
       warning: "yellow",
       error: "red",
     };
+
+    this.popup = new NotificationPopup();
   }
 
-  showNotification({ title = "Notification", text = "", type = "success", duration = 3000, position = "top-3 right-3" }) {
+  showNotification({ title = "Notification", text = "", type = "success", duration = 3000, toast = true, position = "top-3 right-3" }) {
     const color = this.colors[type] || "gray";
     const icon = this.icons[type] || "";
 
-    const notification = document.createElement("div");
-    notification.className = `fixed ${position} bg-${color}-50 !border-${color}-400 border-l-4 rounded-md shadow-md !p-4 flex items-center transition-all transform translate-x-full opacity-0 w-100`;
-    notification.innerHTML = `
+    if (toast) {
+      // Start create toast notification
+      const notification = document.createElement("div");
+      notification.className = `fixed ${position} bg-${color}-50 !border-${color}-400 border-l-4 rounded-md shadow-md !p-4 flex items-center transition-all transform translate-x-full opacity-0 w-100`;
+      notification.innerHTML = `
           <div class="shrink-0">${icon}</div>
           <div class="ml-3">
               <h3 class="font-medium text-${color}-800 text-sm">${title}</h3>
@@ -42,19 +48,27 @@ export class NotificationCenter {
           </div>
       `;
 
-    document.body.appendChild(notification);
-    setTimeout(() => {
-      notification.classList.remove("translate-x-full", "opacity-0");
-      notification.classList.add("translate-x-0", "opacity-100");
-    }, 100);
+      document.body.appendChild(notification);
+      setTimeout(() => {
+        notification.classList.remove("translate-x-full", "opacity-0");
+        notification.classList.add("translate-x-0", "opacity-100");
+      }, 100);
 
-    notification.querySelector("button").addEventListener("click", () => {
-      this.closeNotification(notification);
-    });
+      notification.querySelector("button").addEventListener("click", () => {
+        this.closeNotification(notification);
+      });
 
-    setTimeout(() => {
-      this.closeNotification(notification);
-    }, duration);
+      setTimeout(() => {
+        this.closeNotification(notification);
+      }, duration);
+
+      // End create toast notification
+    } else {
+      // Start create popup notification
+      this.popup.showPopup({ title, message: text, type, duration });
+      // End create popup notification
+    }
+
   }
 
   closeNotification(notification) {
@@ -63,15 +77,16 @@ export class NotificationCenter {
     setTimeout(() => notification.remove(), 500);
   }
 
-  success({ title = "Success!", text = "Operation completed successfully.", position = "top-3 right-3", duration = 3000 }) {
-    this.showNotification({ title, text, type: "success", position, duration });
+  success({ title = "Success!", text = "Operation completed successfully.", toast = true, position = "top-3 right-3", duration = 3000 }) {
+    this.showNotification({ title, text, type: "success", toast, position, duration });
   }
 
-  error({ title = "Error!", text = "Something went wrong.", position = "top-3 right-3", duration = 3000 }) {
-    this.showNotification({ title, text, type: "error", position, duration });
+  error({ title = "Error!", text = "Something went wrong.", toast = true, position = "top-3 right-3", duration = 3000 }) {
+    this.showNotification({ title, text, type: "error", toast, position, duration });
   }
 
-  warning({ title = "Warning!", text = "Please be careful.", position = "top-3 right-3", duration = 3000 }) {
-    this.showNotification({ title, text, type: "warning", position, duration });
+  warning({ title = "Warning!", text = "Please be careful.", toast = true, position = "top-3 right-3", duration = 3000 }) {
+    this.showNotification({ title, text, type: "warning", toast, position, duration });
   }
+
 }
