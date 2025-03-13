@@ -73,12 +73,20 @@ export default class ToastNotificationImpl implements ToastNotification {
     setTimeout(() => notification.remove(), 500);
   }
   success(options: NotificationOptions): void {
+    options.type = "success";
     this.showNotification(options);
   }
   error(options: NotificationOptions): void {
+    options.type = "error";
     this.showNotification(options);
   }
   warning(options: NotificationOptions): void {
+    options.type = "warning";
+    this.showNotification(options);
+  }
+
+  show(options: NotificationOptions): void {
+    options.type = undefined;
     this.showNotification(options);
   }
 }
