@@ -34,7 +34,8 @@ export default class ToastNotificationImpl implements ToastNotification {
 
   showNotification(options: NotificationOptions): void {
     const color = (options.alertColor ?? this.colors[options.type as keyof typeof this.colors]) || "gray"
-    const icon = this.icons[options.type as keyof typeof this.colors] || "";
+
+    const icon = (options.icon && options.icon.length > 7) ? options.icon : (this.icons[options.type as keyof typeof this.colors] ?? this.icons[options.icon as keyof typeof this.colors]) || '';
 
     // Start create toast notification
     const notification = document.createElement("div");
