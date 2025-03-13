@@ -41,23 +41,29 @@ export default class PopupNotificationImpl implements PopupNotification {
   showPopup(options: NotificationOptions): void {
     const color = (options.alertColor ?? this.colors[options.type as keyof typeof this.colors]) || "gray"
 
+    const titleColor = (options.titleColor ?? color) || "gray";
+    const textColor = (options.textColor ?? color) || "gray";
+
+    const confirmButtonColor = (options.confirmButtonColor ?? color) || "gray";
+    const cancelButtonColor = (options.cancelButtonColor ?? color) || "gray";
+
     const icon = (options.icon && options.icon.length > 7) ? options.icon : (this.icons[options.type as keyof typeof this.colors] ?? this.icons[options.icon as keyof typeof this.colors]) || '';
 
     // Create alert dialog
     const alertDialog = document.createElement("div");
     alertDialog.className =
-      "fixed inset-0 pt-6 sm:pt-0 w-screen overflow-y-auto flex justify-center items-center";
+      "fixed inset-0 pt-6 sm:pt-0 w-screen overflow-y-auto flex justify-center items-center transition duration-100";
     alertDialog.innerHTML = `
-      <div class="bg-white dark:bg-zinc-900 shadow-lg p-8 sm:p-6 rounded-xl bg-red-500 ring-1 ring-zinc-950/10 dark:ring-white/10 w-full sm:max-w-md">
+      <div class="fixed flex flex-col justify-center items-center ${options.position} bg-${options.alertColor ? options.alertColor + '-50' : 'white'} dark:bg-${options.alertColor ?? 'zinc'}-900 !border-${options.alertColor ?? 'zinc'}-400 shadow-lg p-8 sm:p-6 rounded-xl ring-1 ring-${options.alertColor ?? 'zinc'}-950/10 dark:ring-${options.alertColor ?? 'white'}/10 ${options.alertWidth ?? 'w-full sm:max-w-md'} ${options.alertHeight ?? 'h-fit'}">
         <div class="flex justify-center">${icon}</div>
-        <h2 class="px-4 py-2 font-semibold text-zinc-950 dark:text-white sm:text-sm text-base text-center">${options.title}</h2>
-        <p class="mt-2 text-gray-700 dark:text-white text-center">${options.text}</p>
+        <h2 class="px-4 py-2 font-semibold text-${titleColor}-800 dark:text-white sm:text-sm text-base text-center">${options.title}</h2>
+        <p class="mt-2 text-${textColor}-700 dark:text-white text-center">${options.text}</p>
         <div class="flex justify-center mt-5 ${options.showConfirmButton ? 'block' : 'hidden'}">
         ${options.showCancelButton ?
         `
         <div class="flex justify-center items-center p-2 w-full gap-3">
-          <button class="bg-${color === "gray" ? "red" : color}-600 px-4 py-2 rounded-md text-white cursor-pointer" id="btnCancel">${options.cancelButtonText ?? 'Cancel'}</button>
-          <button class="bg-${color}-600 px-4 py-2 rounded-md text-white cursor-pointer" id="btnOK">${options.confirmButtonText ?? 'OK'}</button>
+          <button class="bg-${cancelButtonColor === "gray" ? "red" : cancelButtonColor}-600 px-4 py-2 rounded-md text-white cursor-pointer" id="btnCancel">${options.cancelButtonText ?? 'Cancel'}</button>
+          <button class="bg-${confirmButtonColor}-600 px-4 py-2 rounded-md text-white cursor-pointer" id="btnOK">${options.confirmButtonText ?? 'OK'}</button>
         </div>
         `
         : `<button class="bg-${color}-600 px-4 py-2 rounded-md text-white cursor-pointer" id="btnDefaultOK">${options.confirmButtonText ?? 'OK'}</button>`
