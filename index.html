@@ -1,13 +1,63 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notification Center</title>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <button class="bg-green-500 p-3 border-1 border-gray outline-none text-white cursor-pointer"
+    onclick="showSuccessAlert()">
+    Show Success Notification
+  </button>
+
+  <button class="bg-sky-500 p-3 border-1 border-gray outline-none text-white cursor-pointer"
+    onclick="showSuccessAlertDialog()">
+    Show Success Dialog Notification
+  </button>
+
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+  <script>
+    function showSuccessAlert(){
+      notify.success(
+        {
+          title: 'Success',
+          text: 'This is a success message',
+          toast: true,
+          alertWidth: 'lg:w-100 sm:w-80 md:w-80',
+          position: 'top-3 right-3',
+          duration: 5000,
+        }
+      )
+    }
+
+    function showSuccessAlertDialog() {
+      dialog
+        .show({
+          title: "Success",
+          text: "This is a success message",
+          duration: 30000,
+          textColor: "sky",
+          titleColor: "green",
+          showConfirmButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Ok",
+          cancelButtonText: "Cancel",
+          confirmButtonColor: "green",
+        })
+        .then((result) => {
+          if (result) {
+            console.log("User clicked OK!");
+          } else {
+            console.log("User clicked Cancel!");
+          }
+        });
+    }    
+  </script>
+</body>
+
 </html>
