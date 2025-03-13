@@ -3,6 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": "Madhusha Prasad <https://github.com/MadhushaPrasad>",
+  "license": "MIT",
+  "homepage": "https://github.com/MadhushaPrasad/notification-center/#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MadhushaPrasad/notification-center.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MadhushaPrasad/notification-center/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
