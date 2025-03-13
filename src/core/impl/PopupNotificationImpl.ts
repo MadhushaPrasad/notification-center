@@ -37,8 +37,7 @@ export default class PopupNotificationImpl implements PopupNotification {
       error: "red",
     };
   }
-
-  showPopup(options: NotificationOptions): void {
+  showPopup(options: NotificationOptions, resolve?: (value: boolean) => void): void {
     const color = (options.alertColor ?? this.colors[options.type as keyof typeof this.colors]) || "gray"
 
     const titleColor = (options.titleColor ?? color) || "gray";
@@ -79,6 +78,17 @@ export default class PopupNotificationImpl implements PopupNotification {
     // Close alert on button click
     document.getElementById("btnCancel")?.addEventListener("click", () => {
       this.closeNotification(this.alertContainer);
+      resolve?.(false);
+    });
+
+    document.getElementById("btnOK")?.addEventListener("click", () => {
+      this.closeNotification(this.alertContainer);
+      resolve?.(true);
+    });
+
+    document.getElementById("btnDefaultOK")?.addEventListener("click", () => {
+      this.closeNotification(this.alertContainer);
+      resolve?.(true);
     });
 
     const alertContainerDiv = this.alertContainer;
@@ -89,25 +99,35 @@ export default class PopupNotificationImpl implements PopupNotification {
     }, options.duration);
   }
 
-
-
   closeNotification(notification: HTMLElement): void {
     notification.classList.add("hidden");
   }
-  success(options: NotificationOptions): void {
-    options.type = "success";
-    this.showPopup(options);
+
+  success(options: NotificationOptions):  Promise<boolean> {
+    return new Promise((resolve) => {
+      options.type = "success";
+      this.showPopup(options, resolve);
+    });
   }
-  error(options: NotificationOptions): void {
-    options.type = "error";
-    this.showPopup(options);
+
+  error(options: NotificationOptions): Promise<boolean> {
+    return new Promise((resolve) => {
+      options.type = "error";
+      this.showPopup(options, resolve);
+    });
   }
-  warning(options: NotificationOptions): void {
-    options.type = "warning";
-    this.showPopup(options);
+  
+  warning(options: NotificationOptions): Promise<boolean> {
+    return new Promise((resolve) => {
+      options.type = "warning";
+      this.showPopup(options, resolve);
+    });
   }
-  show(options: NotificationOptions): void {
-    options.type = undefined;
-    this.showPopup(options);
+  
+  show(options: NotificationOptions): Promise<boolean> {
+    return new Promise((resolve) => {
+      options.type = undefined;
+      this.showPopup(options, resolve);
+    });
   }
 }
