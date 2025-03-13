@@ -37,6 +37,7 @@ export default class PopupNotificationImpl implements PopupNotification {
       error: "red",
     };
   }
+  
   showPopup(options: NotificationOptions, resolve?: (value: boolean) => void): void {
     const color = (options.alertColor ?? this.colors[options.type as keyof typeof this.colors]) || "gray"
 
@@ -103,7 +104,7 @@ export default class PopupNotificationImpl implements PopupNotification {
     notification.classList.add("hidden");
   }
 
-  success(options: NotificationOptions):  Promise<boolean> {
+  success(options: NotificationOptions): Promise<boolean> {
     return new Promise((resolve) => {
       options.type = "success";
       this.showPopup(options, resolve);
@@ -116,14 +117,14 @@ export default class PopupNotificationImpl implements PopupNotification {
       this.showPopup(options, resolve);
     });
   }
-  
+
   warning(options: NotificationOptions): Promise<boolean> {
     return new Promise((resolve) => {
       options.type = "warning";
       this.showPopup(options, resolve);
     });
   }
-  
+
   show(options: NotificationOptions): Promise<boolean> {
     return new Promise((resolve) => {
       options.type = undefined;
