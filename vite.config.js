@@ -8,7 +8,7 @@ export default {
         resolve(__dirname, 'src/core/impl/PopupNotificationImpl.ts'),
         resolve(__dirname, 'src/core/impl/ToastNotificationImpl.ts'),
       ],
-      name: 'Notification-Center',
+      name: 'notification-center',
       formats: ['es', 'cjs'],
       fileName: (format, name) => {
         if (format === 'es') {
