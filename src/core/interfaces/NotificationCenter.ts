@@ -6,4 +6,5 @@ export default interface NotificationCenter {
   success(options: NotificationOptions): void;
   error(options: NotificationOptions): void;
   warning(options: NotificationOptions): void;
+  show(options: NotificationOptions): void;
 }
