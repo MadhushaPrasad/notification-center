@@ -1,7 +1,7 @@
 export default interface NotificationOptions {
   title?: string;
   text?: string;
-  type: string;
+  type?: string;
   toast?: boolean;
   position?: string;
   duration?: number;
