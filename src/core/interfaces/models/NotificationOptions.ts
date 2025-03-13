@@ -1,6 +1,8 @@
 export default interface NotificationOptions {
   title?: string;
+  titleColor?: string;
   text?: string;
+  textColor?: string;
   type?: string;
   toast?: boolean;
   position?: string;

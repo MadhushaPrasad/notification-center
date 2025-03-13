@@ -33,7 +33,10 @@ export default class ToastNotificationImpl implements ToastNotification {
   }
 
   showNotification(options: NotificationOptions): void {
-    const color = (options.alertColor ?? this.colors[options.type as keyof typeof this.colors]) || "gray"
+    const color = (options.alertColor ?? this.colors[options.type as keyof typeof this.colors]) || "gray";
+
+    const titleColor = (options.titleColor ?? color) || "gray";
+    const textColor = (options.textColor ?? color) || "gray";
 
     const icon = (options.icon && options.icon.length > 7) ? options.icon : (this.icons[options.type as keyof typeof this.colors] ?? this.icons[options.icon as keyof typeof this.colors]) || '';
 
@@ -43,8 +46,8 @@ export default class ToastNotificationImpl implements ToastNotification {
     notification.innerHTML = `
           <div class="shrink-0">${icon}</div>
           <div class="ml-3">
-              <h3 class="font-medium text-${color}-800 text-sm">${options.title}</h3>
-              <div class="mt-2 text-${color}-700 text-sm">${options.text}</div>
+              <h3 class="font-medium text-${titleColor}-800 text-sm">${options.title}</h3>
+              <div class="mt-2 text-${textColor}-700 text-sm">${options.text}</div>
           </div>
           <div class="ml-auto pl-3">
               <button class="text-${color}-800 hover:text-${color}-900 cursor-pointer">&times;</button>
