@@ -38,7 +38,7 @@ export default class ToastNotificationImpl implements ToastNotification {
 
     // Start create toast notification
     const notification = document.createElement("div");
-    notification.className = `fixed ${options.position} bg-${color}-50 !border-${color}-400 border-l-4 rounded-md shadow-md !p-4 flex items-center transition-all transform translate-x-full opacity-0 ${options.alertWidth ?? 'w-80 lg:w-100'} ${options.alertHeight ?? 'w-80 lg:w-100'}`;
+    notification.className = `fixed ${options.position} bg-${color}-50 !border-${color}-400 border-l-4 rounded-md shadow-md !p-4 flex items-center transition-all transform translate-x-full opacity-0 ${options.alertWidth ?? 'w-80 lg:w-100'} ${options.alertHeight ?? 'h-fit'}`;
     notification.innerHTML = `
           <div class="shrink-0">${icon}</div>
           <div class="ml-3">
@@ -67,7 +67,7 @@ export default class ToastNotificationImpl implements ToastNotification {
     // End create toast notification
   }
 
-  closeNotification(notification: HTMLElement): void {
+  closeNotification(notification: HTMLDivElement): void {
     notification.classList.remove("translate-x-0", "opacity-100");
     notification.classList.add("translate-x-full", "opacity-0");
     setTimeout(() => notification.remove(), 500);
