@@ -71,7 +71,7 @@ export default class ToastNotificationImpl implements ToastNotification {
     // End create toast notification
   }
 
-  closeNotification(notification: HTMLDivElement): void {
+  closeNotification(notification: HTMLElement): void {
     notification.classList.remove("translate-x-0", "opacity-100");
     notification.classList.add("translate-x-full", "opacity-0");
     setTimeout(() => notification.remove(), 500);
