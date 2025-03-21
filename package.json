@@ -1,7 +1,6 @@
 {
-  "name": "notification-center",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@madhusha_99/notification-center",
+  "version": "1.0.0",
   "type": "module",
   "files": [
     "dist"
@@ -40,5 +39,20 @@
   "devDependencies": {
     "typescript": "~5.7.2",
     "vite": "^6.2.0"
-  }
+  },
+  "keywords": [
+    "notify",
+    "notification",
+    "ui",
+    "toast",
+    "dialog",
+    "tailwind",
+    "tailwind alert",
+    "notification center",
+    "tailwind notification center",
+    "tailwind notification",
+    "react-notification",
+    "vue-notification",
+    "notifications"
+  ]
 }

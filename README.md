@@ -18,13 +18,7 @@ Notification Center is a lightweight JavaScript library for displaying beautiful
 Install via NPM:
 
 ```sh
-npm install #
-```
-
-Or via Yarn:
-
-```sh
-yarn add #
+npm install @madhusha_99/notification-center
 ```
 
 ## Customizable Options
@@ -66,7 +60,7 @@ You can import `Toast` and `Dialog` in two ways, depending on your preference an
 Import both components from the main module:
 
 ```ts
-import { Toast, Dialog } from './core';
+import { Toast, Dialog } from '@madhusha_99/notification-center';
 ```
 
 > This approach is simple and keeps your imports organized in one place.
@@ -78,8 +72,8 @@ import { Toast, Dialog } from './core';
 Import each component separately if you prefer modular imports:
 
 ```ts
-import Toast from './core/Toast';
-import Dialog from './core/Dialog';
+import Toast from '@madhusha_99/notification-center/core/Toast';
+import Dialog from '@madhusha_99/notification-center/core/Dialog';
 ```
 
 > Useful for selective imports and potentially better tree-shaking in certain build setups.
@@ -91,7 +85,7 @@ import Dialog from './core/Dialog';
 To initialize notifications globally, add the following setup:
 
 ```typescript
-import { Toast, Dialog } from './core';
+import { Toast, Dialog } from '@madhusha_99/notification-center';
 
 declare global {
   interface Window {
@@ -107,7 +101,7 @@ window.dialog = new Dialog();
 ## or
 
 ```javascript
-import { Toast, Dialog } from './core';
+import { Toast, Dialog } from '@madhusha_99/notification-center';
 
 window.notify = new Toast(); // you can use global variable name as you want
 window.dialog = new Dialog();
@@ -118,7 +112,7 @@ window.dialog = new Dialog();
 To use notifications without global initialization, you can create individual instances:
 
 ```typescript
-import { Toast, Dialog } from './core';
+import { Toast, Dialog } from '@madhusha_99/notification-center';
 
 const notify = new Toast(); //you can use constable variable name as you want
 const dialog = new Dialog();
@@ -129,6 +123,8 @@ const dialog = new Dialog();
 ### Displaying Notifications
 
 #### Toast Notification
+
+![toast-notification](https://github.com/user-attachments/assets/0fe73695-f60d-499a-bfa7-dec22ce26038)
 
 You can trigger notifications using:
 
@@ -159,6 +155,14 @@ notify.error({
 
 #### Dialog Notification
 
+### Light mode
+
+![dialog-notification-light-mode](https://github.com/user-attachments/assets/2d123c65-837b-4c1b-bc74-b934d04b6198)
+
+### Dark mode
+
+![dialog-notification-dark-mode](https://github.com/user-attachments/assets/f01fc065-cd41-42ad-aa6a-e21a5a55fe22)
+
 ```typescript
 dialog.show({
   title: "Are you sure?",
@@ -172,6 +176,8 @@ dialog.show({
 ---
 
 ### Handling User Actions with Promises
+
+![Handling User Actions with Promises](https://github.com/user-attachments/assets/6c1bad87-92a4-43f3-bf96-0ae74beb3d8f)
 
 The `dialog.show()` method returns a Promise, allowing you to handle user actions asynchronously like a true tech geek! 🚀
 
