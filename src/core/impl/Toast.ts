@@ -1,7 +1,7 @@
-import ToastNotification from "./../interfaces/custom/ToastNotification";
-import NotificationOptions from "./../interfaces/models/NotificationOptions";
+import ToastNotification from "../interfaces/custom/ToastNotification";
+import NotificationOptions from "../interfaces/models/NotificationOptions";
 
-export default class ToastNotificationImpl implements ToastNotification {
+export default class Toast implements ToastNotification {
   icons: { success: string; warning: string; error: string; };
   colors: { success: string; warning: string; error: string; };
 

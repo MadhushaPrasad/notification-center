@@ -5,17 +5,23 @@ export default {
     lib: {
       entry: [
         resolve(__dirname, 'src/core/index.ts'),
-        resolve(__dirname, 'src/core/impl/PopupNotificationImpl.ts'),
-        resolve(__dirname, 'src/core/impl/ToastNotificationImpl.ts'),
+        resolve(__dirname, 'src/core/impl/Dialog.ts'),
+        resolve(__dirname, 'src/core/impl/Toast.ts'),
       ],
       name: 'notification-center',
       formats: ['es', 'cjs'],
       fileName: (format, name) => {
-        if (format === 'es') {
-          return `${name}.js`
+        if (name === 'index') {
+          if (format === 'es') {
+            return `index.js`
+          }
+          return `index.${format}`
+        }else{
+          if (format === 'es') {
+            return `core/${name}/index.js`
+          }
+          return `core/${name}/index.${format}`
         }
-
-        return `${name}.${format}`
       }
     },
   }
