@@ -18,13 +18,7 @@ Notification Center is a lightweight JavaScript library for displaying beautiful
 Install via NPM:
 
 ```sh
-npm install #
-```
-
-Or via Yarn:
-
-```sh
-yarn add #
+npm install @madhusha_99/notification-center
 ```
 
 ## Customizable Options
@@ -66,7 +60,7 @@ You can import `Toast` and `Dialog` in two ways, depending on your preference an
 Import both components from the main module:
 
 ```ts
-import { Toast, Dialog } from './core';
+import { Toast, Dialog } from '@madhusha_99/notification-center';
 ```
 
 > This approach is simple and keeps your imports organized in one place.
@@ -78,8 +72,8 @@ import { Toast, Dialog } from './core';
 Import each component separately if you prefer modular imports:
 
 ```ts
-import Toast from './core/Toast';
-import Dialog from './core/Dialog';
+import Toast from '@madhusha_99/notification-center/core/Toast';
+import Dialog from '@madhusha_99/notification-center/core/Dialog';
 ```
 
 > Useful for selective imports and potentially better tree-shaking in certain build setups.
@@ -91,7 +85,7 @@ import Dialog from './core/Dialog';
 To initialize notifications globally, add the following setup:
 
 ```typescript
-import { Toast, Dialog } from './core';
+import { Toast, Dialog } from '@madhusha_99/notification-center';
 
 declare global {
   interface Window {
@@ -107,7 +101,7 @@ window.dialog = new Dialog();
 ## or
 
 ```javascript
-import { Toast, Dialog } from './core';
+import { Toast, Dialog } from '@madhusha_99/notification-center';
 
 window.notify = new Toast(); // you can use global variable name as you want
 window.dialog = new Dialog();
@@ -118,7 +112,7 @@ window.dialog = new Dialog();
 To use notifications without global initialization, you can create individual instances:
 
 ```typescript
-import { Toast, Dialog } from './core';
+import { Toast, Dialog } from '@madhusha_99/notification-center';
 
 const notify = new Toast(); //you can use constable variable name as you want
 const dialog = new Dialog();
