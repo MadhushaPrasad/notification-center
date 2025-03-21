@@ -1,9 +1,11 @@
 {
   "name": "@madhusha_99/notification-center",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "type": "module",
   "files": [
-    "dist"
+    "dist/core",
+    "dist/index.js",
+    "dist/index.cjs"
   ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
