@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "files": [
-    "dist"
+    "dist/core",
+    "dist/index.js",
+    "dist/index.cjs"
   ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
