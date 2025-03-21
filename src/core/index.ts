@@ -1,7 +1,8 @@
-import ToastNotificationImpl from "./impl/ToastNotificationImpl";
-import PopupNotificationImpl from "./impl/PopupNotificationImpl";
+import Toast from "./impl/Toast";
+import Dialog from "./impl/Dialog";
 
 export {
-  ToastNotificationImpl as Toast,
-  PopupNotificationImpl as Dialog
+  Toast,
+  Dialog
 }
+

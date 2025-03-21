@@ -57,7 +57,34 @@ Below are the customizable options for notifications:
 
 ## 📌 Usage
 
-### Importing and Initializing
+## 📦 Importing and Initializing
+
+You can import `Toast` and `Dialog` in two ways, depending on your preference and project structure.
+
+### Option 1: Import from a Single Entry Point
+
+Import both components from the main module:
+
+```ts
+import { Toast, Dialog } from './core';
+```
+
+> This approach is simple and keeps your imports organized in one place.
+
+---
+
+### Option 2: Import Individual Components
+
+Import each component separately if you prefer modular imports:
+
+```ts
+import Toast from './core/Toast';
+import Dialog from './core/Dialog';
+```
+
+> Useful for selective imports and potentially better tree-shaking in certain build setups.
+
+---
 
 ### Global Initialization
 
@@ -96,6 +123,8 @@ import { Toast, Dialog } from './core';
 const notify = new Toast(); //you can use constable variable name as you want
 const dialog = new Dialog();
 ```
+
+---
 
 ### Displaying Notifications
 
@@ -140,6 +169,8 @@ dialog.show({
 });
 ```
 
+---
+
 ### Handling User Actions with Promises
 
 The `dialog.show()` method returns a Promise, allowing you to handle user actions asynchronously like a true tech geek! 🚀
@@ -161,6 +192,8 @@ dialog.show({
 });
 ```
 
+---
+
 ### 3️⃣ Example with Buttons
 
 ```html
@@ -179,6 +212,8 @@ dialog.show({
   Show Error Notification
 </button>
 ```
+
+---
 
 ## 🎨 Tailwind CSS Integration
 
@@ -206,6 +241,8 @@ npx tailwindcss init
 - `bottom-3 right-3` → Bottom Right
 - `bottom-3 left-3` → Bottom Left
 
+---
+
 ### Using Tailwind CSS CDN
 
 If you prefer using Tailwind without NPM, include the following in your HTML:
@@ -217,6 +254,8 @@ If you prefer using Tailwind without NPM, include the following in your HTML:
 ### `success(options)`, `warning(options)`, `error(options)`
 
 Shortcut methods for common notifications.
+
+---
 
 ### License
 
