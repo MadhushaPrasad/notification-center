@@ -13,13 +13,13 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./toast": {
-      "import": "./dist/ToastNotificationImpl.js",
-      "require": "./dist/ToastNotificationImpl.cjs"
+    "./Toast": {
+      "import": "./dist/core/Toast/index.js",
+      "require": "./dist/core/Toast/index.cjs"
     },
-    "./dialog": {
-      "import": "./dist/PopupNotificationImpl.js",
-      "require": "./dist/PopupNotificationImpl.cjs"
+    "./Dialog": {
+      "import": "./dist/core/Dialog/index.js",
+      "require": "./dist/core/Dialog/index.cjs"
     }
   },
   "author": "Madhusha Prasad <https://github.com/MadhushaPrasad>",
