@@ -1,8 +1,8 @@
-import PopupNotification from "./../interfaces/custom/PopupNotification";
-import NotificationOptions from "./../interfaces/models/NotificationOptions";
+import PopupNotification from "../interfaces/custom/PopupNotification";
+import NotificationOptions from "../interfaces/models/NotificationOptions";
 
 
-export default class PopupNotificationImpl implements PopupNotification {
+export default class Dialog implements PopupNotification {
   alertContainer: HTMLDivElement;
   icons: { success: string; warning: string; error: string; };
   colors: { success: string; warning: string; error: string; };
