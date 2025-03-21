@@ -130,6 +130,8 @@ const dialog = new Dialog();
 
 #### Toast Notification
 
+![toast-notification](https://github.com/user-attachments/assets/0fe73695-f60d-499a-bfa7-dec22ce26038)
+
 You can trigger notifications using:
 
 ```js
@@ -159,6 +161,14 @@ notify.error({
 
 #### Dialog Notification
 
+### Light mode
+
+![dialog-notification-light-mode](https://github.com/user-attachments/assets/2d123c65-837b-4c1b-bc74-b934d04b6198)
+
+### Dark mode
+
+![dialog-notification-dark-mode](https://github.com/user-attachments/assets/f01fc065-cd41-42ad-aa6a-e21a5a55fe22)
+
 ```typescript
 dialog.show({
   title: "Are you sure?",
@@ -172,6 +182,8 @@ dialog.show({
 ---
 
 ### Handling User Actions with Promises
+
+![Handling User Actions with Promises](https://github.com/user-attachments/assets/6c1bad87-92a4-43f3-bf96-0ae74beb3d8f)
 
 The `dialog.show()` method returns a Promise, allowing you to handle user actions asynchronously like a true tech geek! 🚀
 
