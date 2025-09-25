@@ -1,9 +1,9 @@
-import ToastNotification from "../interfaces/custom/ToastNotification";
-import NotificationOptions from "../interfaces/models/NotificationOptions";
+import ToastNotification from '../interfaces/custom/ToastNotification'
+import NotificationOptions from '../interfaces/models/NotificationOptions'
 
 export default class Toast implements ToastNotification {
-  icons: { success: string; warning: string; error: string; };
-  colors: { success: string; warning: string; error: string; };
+  icons: { success: string; warning: string; error: string }
+  colors: { success: string; warning: string; error: string }
 
   constructor() {
     this.icons = {
@@ -22,27 +22,29 @@ export default class Toast implements ToastNotification {
                   d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z"
                   clip-rule="evenodd" />
           </svg>`,
-    };
+    }
 
     this.colors = {
-      success: "green",
-      warning: "yellow",
-      error: "red",
-    };
-
+      success: 'green',
+      warning: 'yellow',
+      error: 'red',
+    }
   }
 
   showNotification(options: NotificationOptions): void {
-    const color = (options.alertColor ?? this.colors[options.type as keyof typeof this.colors]) || "gray";
+    const color = (options.alertColor ?? this.colors[options.type as keyof typeof this.colors]) || 'gray'
 
-    const titleColor = (options.titleColor ?? color) || "gray";
-    const textColor = (options.textColor ?? color) || "gray";
+    const titleColor = (options.titleColor ?? color) || 'gray'
+    const textColor = (options.textColor ?? color) || 'gray'
 
-    const icon = (options.icon && options.icon.length > 7) ? options.icon : (this.icons[options.type as keyof typeof this.colors] ?? this.icons[options.icon as keyof typeof this.colors]) || '';
+    const icon = options.icon && options.icon.length > 7 ? options.icon : (this.icons[options.type as keyof typeof this.colors] ?? this.icons[options.icon as keyof typeof this.colors]) || ''
 
     // Start create toast notification
-    const notification = document.createElement("div");
-    notification.className = `fixed ${options.position} bg-${color}-50 !border-${color}-400 border-l-4 rounded-md shadow-md !p-4 flex items-center transition-all transform translate-x-full opacity-0 ${options.alertWidth ?? 'w-80 lg:w-100'} ${options.alertHeight ?? 'h-fit'}`;
+    const notification = document.createElement('div')
+    notification.className = options.class
+      ? options.class
+      : `fixed ${options.position} bg-${color}-50 !border-${color}-400 border-l-4 rounded-md shadow-md !p-4 flex items-center transition-all transform translate-x-full opacity-0 ${options.alertWidth ?? 'w-80 lg:w-100'
+      } ${options.alertHeight ?? 'h-fit'}`
     notification.innerHTML = `
           <div class="shrink-0">${icon}</div>
           <div class="ml-3">
@@ -52,45 +54,45 @@ export default class Toast implements ToastNotification {
           <div class="ml-auto pl-3">
               <button class="text-${color}-800 hover:text-${color}-900 cursor-pointer">&times;</button>
           </div>
-      `;
+      `
 
-    document.body.appendChild(notification);
+    document.body.appendChild(notification)
     setTimeout(() => {
-      notification.classList.remove("translate-x-full", "opacity-0");
-      notification.classList.add("translate-x-0", "opacity-100");
-    }, 100);
+      notification.classList.remove('translate-x-full', 'opacity-0')
+      notification.classList.add('translate-x-0', 'opacity-100')
+    }, 100)
 
-    notification.querySelector("button")?.addEventListener("click", () => {
-      this.closeNotification(notification);
-    });
+    notification.querySelector('button')?.addEventListener('click', () => {
+      this.closeNotification(notification)
+    })
 
     setTimeout(() => {
-      this.closeNotification(notification);
-    }, options.duration);
+      this.closeNotification(notification)
+    }, options.duration)
 
     // End create toast notification
   }
 
   closeNotification(notification: HTMLElement): void {
-    notification.classList.remove("translate-x-0", "opacity-100");
-    notification.classList.add("translate-x-full", "opacity-0");
-    setTimeout(() => notification.remove(), 500);
+    notification.classList.remove('translate-x-0', 'opacity-100')
+    notification.classList.add('translate-x-full', 'opacity-0')
+    setTimeout(() => notification.remove(), 500)
   }
   success(options: NotificationOptions): void {
-    options.type = "success";
-    this.showNotification(options);
+    options.type = 'success'
+    this.showNotification(options)
   }
   error(options: NotificationOptions): void {
-    options.type = "error";
-    this.showNotification(options);
+    options.type = 'error'
+    this.showNotification(options)
   }
   warning(options: NotificationOptions): void {
-    options.type = "warning";
-    this.showNotification(options);
+    options.type = 'warning'
+    this.showNotification(options)
   }
 
   show(options: NotificationOptions): void {
-    options.type = undefined;
-    this.showNotification(options);
+    options.type = undefined
+    this.showNotification(options)
   }
 }

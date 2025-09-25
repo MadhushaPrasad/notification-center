@@ -1,4 +1,4 @@
-# Notification Center
+# Notification Center (v1.0.7)
 
 Notification Center is a lightweight JavaScript library for displaying beautiful, customizable notifications powered by **Tailwind CSS**.
 
@@ -7,6 +7,7 @@ Notification Center is a lightweight JavaScript library for displaying beautiful
 - Supports **Success, Warning, and Error** notifications.
 - Uses **Tailwind CSS** for styling.
 - **Positioning support** using Tailwind utility classes.
+- **Custom classes support** → now you can add your own classes for notification containers.
 - **Auto-dismiss** after a set duration.
 - **Smooth animations** and transitions.
 - **Lightweight** and easy to integrate.
@@ -25,29 +26,30 @@ npm install @madhusha_99/notification-center
 
 Below are the customizable options for notifications:
 
-| Option               | Type      | Description |
-|----------------------|----------|-------------|
-| `title`             | `string`  | The title of the notification |
-| `titleColor`        | `string`  | Color of the title text |
-| `text`              | `string`  | The content of the notification |
-| `textColor`         | `string`  | Color of the text content |
-| `type`              | `string`  | Notification type (e.g., success, error, warning) |
-| `toast`             | `boolean` | Whether the notification should be a toast |
-| `position`          | `string`  | Position of the notification (e.g., top-right, bottom-left) |
-| `duration`          | `number`  | Duration the notification is displayed (in milliseconds) |
-| `icon`              | `string`  | Icon to be displayed in the notification |
-| `alertColor`        | `string`  | Background color of the alert |
-| `alertWidth`        | `string`  | Width of the alert box |
-| `alertHeight`       | `string`  | Height of the alert box |
-| `showCloseButton`   | `boolean` | Whether to show a close button |
-| `showCancelButton`  | `boolean` | Whether to show a cancel button |
-| `showConfirmButton` | `boolean` | Whether to show a confirm button |
-| `confirmButtonText` | `string`  | Text for the confirm button |
-| `cancelButtonText`  | `string`  | Text for the cancel button |
-| `confirmButtonColor`| `string`  | Background color of the confirm button |
-| `cancelButtonColor` | `string`  | Background color of the cancel button |
-| `confirmButtonClass`| `string`  | Custom CSS class for the confirm button |
-| `cancelButtonClass` | `string`  | Custom CSS class for the cancel button |
+| Option               | Type      | Description                                       |
+| -------------------- | --------- | ------------------------------------------------- |
+| `title`              | `string`  | The title of the notification                     |
+| `titleColor`         | `string`  | Color of the title text                           |
+| `text`               | `string`  | The content of the notification                   |
+| `textColor`          | `string`  | Color of the text content                         |
+| `class`              | `string`  | Custom CSS/Tailwind class for the container (NEW) |
+| `type`               | `string`  | Notification type (`success`, `error`, `warning`) |
+| `toast`              | `boolean` | Whether it should be a toast notification         |
+| `position`           | `string`  | Tailwind-based position (`top-3 right-3`, etc.)   |
+| `duration`           | `number`  | Display duration (ms)                             |
+| `icon`               | `string`  | Custom icon (SVG/HTML). If omitted, uses defaults |
+| `alertColor`         | `string`  | Base color (affects border & background)          |
+| `alertWidth`         | `string`  | Width of the notification                         |
+| `alertHeight`        | `string`  | Height of the notification                        |
+| `showCloseButton`    | `boolean` | Show a close button                               |
+| `showCancelButton`   | `boolean` | Show a cancel button (dialogs)                    |
+| `showConfirmButton`  | `boolean` | Show a confirm button (dialogs)                   |
+| `confirmButtonText`  | `string`  | Confirm button text                               |
+| `cancelButtonText`   | `string`  | Cancel button text                                |
+| `confirmButtonColor` | `string`  | Confirm button background color                   |
+| `cancelButtonColor`  | `string`  | Cancel button background color                    |
+| `confirmButtonClass` | `string`  | Custom class for confirm button                   |
+| `cancelButtonClass`  | `string`  | Custom class for cancel button                    |
 
 ## 📌 Usage
 
@@ -147,6 +149,15 @@ notify.warning({
 notify.error({
   title: "Error!",
   text: "Something went wrong!",
+  position: "top-3 right-3",
+  type: "error",
+  duration: 3000
+});
+
+notify.show({
+  title: "Error!",
+  text: "Something went wrong!",
+  class: "fixed top-3 right-3 bg-red-50 !border-red-400 border-l-4 rounded-md shadow-md !p-4 flex items-center transition-all transform translate-x-full opacity-0 w-80 lg:w-100",
   position: "top-3 right-3",
   type: "error",
   duration: 3000
