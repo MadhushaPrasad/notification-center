@@ -139,7 +139,7 @@ notify.show({
 notify.warning({
   title: "Warning!",
   text: "Please be careful.",
-  position: "top-3 right-3"
+  position: "top-3 right-3",
   type: "warning",
   duration: 3000
 });
@@ -147,7 +147,7 @@ notify.warning({
 notify.error({
   title: "Error!",
   text: "Something went wrong!",
-  position: "top-3 right-3"
+  position: "top-3 right-3",
   type: "error",
   duration: 3000
 });
