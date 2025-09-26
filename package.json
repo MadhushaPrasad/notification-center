@@ -1,6 +1,6 @@
 {
   "name": "@madhusha_99/notification-center",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "type": "module",
   "files": [
     "dist/core",
